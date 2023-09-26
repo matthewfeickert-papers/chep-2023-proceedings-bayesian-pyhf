@@ -1,44 +1,12 @@
 \usepackage[varg]{txfonts}   % Web of Conferences font
 \usepackage{amsmath,bm}
-\graphicspath{{figures/}}
-
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
-\graphicspath{/graphics}
-
-
-\usepackage[english]{babel}
-\usepackage{geometry}
-\usepackage{array}
-\usepackage[utf8]{inputenc}
-\usepackage{xcolor}
-\usepackage{multirow}
-\usepackage{lineno}
-\usepackage{graphicx}
-\graphicspath{ {./graphics/} }
-\usepackage{lipsum}
-\usepackage{lmodern}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{amsmath}
-\usepackage{amssymb}
-
-\usepackage{multirow}
-\usepackage{fancyhdr}
-\usepackage{enumitem}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amscd}
-\usepackage{wrapfig}
-\usepackage{csquotes}
-\usepackage{makeidx}
 \usepackage{hyperref}
-\usepackage{lastpage}
-\usepackage{braket}
-\usepackage{float}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{mathrsfs}
-\usepackage{amssymb}
-\usepackage{diagbox}
-\usepackage[title,titletoc]{appendix}
+\graphicspath{{figures/}}
+\RequirePackage{caption}
+\RequirePackage{subcaption}  % Needed for subfigures
+\usepackage[capitalize]{cleveref}% https://ctan.org/pkg/cleveref % Must be loaded after hyperref
+
+\hypersetup{bookmarksnumbered=true, bookmarksopen=true, bookmarksopenlevel=0}
+\hypersetup{pdftitle={Bayesian Methodologies with pyhf}, pdfauthor={Matthew Feickert, Lukas Heinrich, Malin Horstman}}
+\hypersetup{colorlinks,breaklinks}
+\hypersetup{linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue}
