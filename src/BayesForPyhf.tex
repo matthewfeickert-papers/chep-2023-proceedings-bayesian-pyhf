@@ -21,7 +21,7 @@ Bayesian inference is governed by Bayes' theorem~\cite{ConjPriorsBerkeley}:
     \begin{align} \label{Bayes}
         p(\eta, \chi \vert x, a) = \frac{p(x, a\vert \eta, \chi) p(\eta, \chi)}{p(x, a)}.
     \end{align}
- \noindent It describes the updating of a prior probability distribution $p(\eta, \chi)$ to a posterior distribution $p(\eta, \chi \vert x)$ by multiplication with a data-generating model $p(x \vert \eta, \chi)$. $\eta, \chi$ are parameters of interest (POI) and constraint parameters respectively and $x, a$ observations and auxiliary measurements and evidence $p(x, a)$. While a closed form solution of Eq. \eqref{Bayes} is intractable due to the evidence, approximate solutions are viable via sampling methods (such as MCMC~\cite{PyMC}) as only a tractable joint likelihood $p(x, a \vert \eta, \chi)p(\eta, \chi)$ is required.
+ \noindent It describes the updating of a prior probability distribution $p(\eta, \chi)$ to a posterior distribution $p(\eta, \chi \vert x)$ by multiplication with a data-generating model $p(x \vert \eta, \chi)$. $\eta, \chi$ are parameters of interest (POI) and constraint parameters respectively and $x, a$ observations and auxiliary measurements and evidence $p(x, a)$. While a closed form solution of Eq.~\eqref{Bayes} is intractable due to the evidence, approximate solutions are viable via sampling methods (such as MCMC~\cite{PyMC}) as only a tractable joint likelihood $p(x, a \vert \eta, \chi)p(\eta, \chi)$ is required.
 
 \subsection{\texttt{PyMC}}
 \texttt{PyMC} is a Python library for building Bayesian models and already includes a wide range of cross-checks and plotting functions through its \texttt{arviz}-backend~\cite{PyMC, arviz}. \\
@@ -32,17 +32,17 @@ Within \texttt{PyMC} a whole set of MCMC techniques is available, e.g. prior and
 
 \subsection{Prior Constraints from Auxiliary Measurements and Ur-Priors}
 
-In order to get a sampling representation of the posterior using MCMC methods the prior distribution and the \texttt{HistFactory} models are needed, i.e following Eq. \eqref{Bayes}:
+In order to get a sampling representation of the posterior using MCMC methods the prior distribution and the \texttt{HistFactory} models are needed, i.e following Eq.~\eqref{Bayes}:
     \begin{align}
         p(\eta, \chi \vert x, a) \approx p(x, a \vert \eta, \chi)p(\eta, \chi).
     \end{align}
 \noindent While $p(x, a \vert \eta, \chi)$ can be build using \texttt{pyhf}, the prior beliefs of the value of the parameters still have to be quantified. It would be possible to treat $\eta$ and $\chi$ equally, i.e. to determine some ur-prior $p(\eta, \chi)$ by hand and update with $x$ and $a$ in parallel. Ur-priors describe the belief about the parameter value before taking the observations into account. \\
-The approach followed in this work however relies on a different treatment of the constraint priors $p(\chi)$. It is based on separating the auxiliary observations $a$ from the main inference step and using it instead in an initial inference step. In this step, Bayes' theorem is used to update ur-priors $p_\text{ur}(\chi)$ with the auxiliary measurements $a$, thus incorporating the information gained from the auxiliary measurements $a$, see Eq. \eqref{initialInference}.
+The approach followed in this work however relies on a different treatment of the constraint priors $p(\chi)$. It is based on separating the auxiliary observations $a$ from the main inference step and using it instead in an initial inference step. In this step, Bayes' theorem is used to update ur-priors $p_\text{ur}(\chi)$ with the auxiliary measurements $a$, thus incorporating the information gained from the auxiliary measurements $a$, see Eq.~\eqref{initialInference}.
     \begin{align} \label{initialInference}
 	p(\chi \vert a) \approx p(a \vert \chi) p_{\text{ur}}(\chi)
     \end{align}
 
-\noindent The posteriors $p(\chi \vert a)$ from Eq. \eqref{initialInference} can then be used as prior belief in the main inference step. \\
+\noindent The posteriors $p(\chi \vert a)$ from Eq.~\eqref{initialInference} can then be used as prior belief in the main inference step. \\
 This approach is useful, as the number of constraint measurements can get arbitrarily high which would imply high computational cost when updating $p(\eta)$ and $p(\chi)$ together. Splitting the auxiliary update of the constraint parameters into this initial step solves this issue based on the concept of conjugate priors. This concept dictates that for given sets of distributions for the priors and the data-generating model, the posterior distribution is of the same distribution family as the prior and can be given in closed form - the priors and posteriors are then conjugate. Due to the limited possibilities for the auxiliary measurements (which can be either Gaussian or Poisson distributed), this concept is viable for the constraint parameters with corresponding Gaussian and Gamma distributed ur-priors, see Table \ref{ConjugatePriors}\cite{ConjPriorsBerkeley}. The freedom to choose these compatible ur-priors is justified as the priors will be dominated by the auxiliary measurements. Indeed, in the limit of very vague ur-priors the priors are completely dominated by the auxiliary measurements $a$:
     \begin{align}
     \begin{split}
@@ -94,7 +94,7 @@ For a single auxiliary measurement $a$, the hyperparameters for the Gaussian pos
     \end{split}
     \end{align}
 
-\noindent Applying the methods described above to Eq. \eqref{Bayes}, the final form of Bayes' theorem used in this work then reads:
+\noindent Applying the methods described above to Eq.~\eqref{Bayes}, the final form of Bayes' theorem used in this work then reads:
     \begin{align} \label{BayesConj_final}
         p(\eta, \chi \vert x, a) \propto p(x\vert \eta, \chi) p(\eta) p(\chi | a).
     \end{align}
