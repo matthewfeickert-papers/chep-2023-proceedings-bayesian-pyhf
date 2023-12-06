@@ -1,7 +1,7 @@
-\section{Bayesian Statistics for HistFactory Models} \label{BayesForpyhf}
+\section{Bayesian Statistics for HistFactory Models}\label{BayesForpyhf}
 
 
-\subsection{\texttt{HistFactory} Models and \texttt{pyhf}} \label{subsec:HFandpyhf}
+\subsection{\texttt{HistFactory} Models and \texttt{pyhf}}\label{subsec:HFandpyhf}
 
 In the \texttt{HistFactory} template, the expected event rates $\nu$ are dependent on two sets of parameters, free parameters $\eta$ and constraint parameters $\chi$. In contrast to the free parameters, the $\chi$ are constrained by external data, whose impact has to be considered when building the statistical model. This can be done by assuming auxiliary measurements with observations $a_{\chi}$ for each parameter $\chi$. Each auxiliary measurement then corresponds to a constraint term  $c_{\chi}$ which is added to the likelihood and controls the compatibility of the value of the constraint parameter $\chi$ with their corresponding auxiliary measurements $a_{\chi}$~\cite{pyhf, pyhf_joss, Cranmer:1456844}. For simplicity, the model for these auxiliary measurements are either Gaussian or Poisson distributions. \\
 Taking the constraints into account, the resulting statistical model for event rates $n$ and auxiliary measurements $a$ is then given by~\cite{pyhf, pyhf_joss}:
