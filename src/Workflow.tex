@@ -1,4 +1,6 @@
-\section{A Bayesian Workflow}{\label{BaysWF}} For testing and evaluating the Bayesian inference model we follow Ref.~\cite{Betancourt2020} and present selected steps below. \\
+\section{A Bayesian Workflow}\label{BaysWF}
+
+For testing and evaluating the Bayesian inference model we follow Ref.~\cite{Betancourt2020} and present the selected steps below. \\
 
 \noindent We demonstrate the inference methods derived in Sec.~\ref{BayesForpyhf}, i.e. building a statistical model using \texttt{pyhf} and then evaluating it using the whole range of inference techniques provided by \texttt{PyMC} and \texttt{arviz}, using a simple model. This model has three bins and one signal strength parameter $\eta$ (the POI of the model) and one correlated background parameter $\chi$ (constrained by a Normal-distributed auxiliary measurement) with ur-hyperparameters $\mu_{\text{ur}}, \sigma_{\text{ur}} = 0, 2$. The event counts $n_i$ for each bin $i$ and a signal $s_i$ and background $b_i$ can be calculated as:
     \begin{align} \label{binCounts}
